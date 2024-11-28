@@ -91,4 +91,19 @@ public class UsersServiceImpl implements UsersService {
 		return userDto;
 	}
 
+	@Override
+	public UserDto getUserDetailsByEmail(String email) {
+		try {
+		Optional<UserEntity> userEntityOptional = usersRepository.findByEmail(email);
+		if(!userEntityOptional.isPresent()) {
+			throw new UsernameNotFoundException(email);
+		}
+		UserEntity userEntity = userEntityOptional.get();
+		ModelMapper modelMapper = new ModelMapper();
+		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return modelMapper.map(userEntity, UserDto.class);
+	}
 }
