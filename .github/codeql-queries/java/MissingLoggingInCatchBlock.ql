@@ -2,6 +2,7 @@
  * @name Missing logging in exception block
  * @description Alerts if an exception block does not contain logging statements.
  * @kind problem
+ * @id java/logging/missing-in-exception-block
  * @problem.severity warning
  * @tags maintainability best-practice
  */
