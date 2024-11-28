@@ -17,7 +17,7 @@ predicate isLoggingMethod(MethodAccess loggingCall) {
 // Predicate to check if a catch block contains logging
 predicate hasLogging(CatchClause catchBlock) {
   exists(MethodAccess loggingCall |
-    loggingCall.getEnclosingStmt() = catchBlock.getBody().getAStmt() and
+    loggingCall.getEnclosingStmt() = catchBlock.getBlock().getAStmt() and
     isLoggingMethod(loggingCall)
   )
 }
